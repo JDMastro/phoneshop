@@ -1,0 +1,49 @@
+<div class="container contenerdor-product">
+    <div class="text-center title">
+
+        <h2 class="fw-bolder blu">Nuestros productos</h2>
+        <p class="fw-light">
+            Nuestra empresa se enorgullece de ofrecer una amplia gama de teléfonos inteligentes diseñados para
+            satisfacer las necesidades y deseos de nuestros clientes más exigentes. Desde elegantes dispositivos de gama
+            alta con tecnología de vanguardia hasta opciones asequibles pero potentes
+        </p>
+       
+        <input type="search"  [(ngModel)]="search" class="form-control" autofocus>
+
+
+
+        <ul class="nav justify-content-center">
+            <li class="nav-item" style="cursor: pointer;">
+                <a class="nav-link text-dark" (click)="tipohabChange('')" [ngClass]="{'active' :tipoCel== ''}">Todos</a>
+            </li>
+            <li class="nav-item" style="cursor: pointer;">
+                <a class="nav-link text-dark" (click)="tipohabChange('XIAOMI')" [ngClass]="{'active' :tipoCel== 'XIAOMI'}">Xiaomi</a>
+            </li>
+            <li class="nav-item" style="cursor: pointer;">
+                <a class="nav-link text-dark" (click)="tipohabChange('SAMSUNG')" [ngClass]="{'active' :tipoCel== 'SAMSUNG'}">Samsung</a>
+            </li>
+            <li class="nav-item" style="cursor: pointer;">
+                <a class="nav-link text-dark" (click)="tipohabChange('IPHONE')" [ngClass]="{'active' :tipoCel== 'IPHONE'}">Iphone</a>
+            </li>
+
+        </ul>
+
+
+        <div class="row">
+            <div class="col-md-6 col-lg-4 mt-1" *ngFor="let product of (products | productFilter:search:tipoCel)">
+                <div class="card" style="width: 15rem; height: 15rem;">
+                    <img src={{product.img}} class="card-img-top d-block w-80 h-50 mx-auto img-fluid object-fit-fill"
+                        alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.name}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted"><span class="blu">$</span> {{product.price}}</h6>
+                        <a *ngIf="check(product.id)" (click)="addToCart(product)" class="card-link">Agregar al
+                            carrito</a>
+
+                        <a *ngIf="checkDetail(product.id)" routerLink="/products/details" href="#" class="card-link">Ver
+                            detalles</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,28 @@
+@import "presentation/styles/colors";
+
+.img_logo {
+    width: 90px;
+    height: 70px;
+}
+
+.active {
+    color: $color-primary !important;
+}
+
+.navbar-nav{
+    background-color: $bg-white;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    justify-content: space-around;
+    height: 100%;
+    padding: 10px;
+    width: 600px;
+}
+
+.nav-link{
+    font-weight: 500;
+    &:hover{
+        color: $color-primary;
+    }
+}
